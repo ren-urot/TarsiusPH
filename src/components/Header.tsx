@@ -6,7 +6,7 @@ export default function Header() {
       <a href="#hero" aria-label="Tarsius home">
         <Image src="/hero/tarsius-logo.svg" alt="Tarsius" width={203} height={58} className="h-8 w-auto sm:h-9" priority />
       </a>
-      <nav className="flex items-center gap-8 text-base text-white sm:text-lg">
+      <nav className="flex items-center gap-8 font-mono text-xs uppercase tracking-[0.25em] text-white sm:text-sm">
         <a href="#about" className="transition-colors hover:text-gold">
           About
         </a>

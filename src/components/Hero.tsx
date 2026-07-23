@@ -37,7 +37,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 flex items-center gap-3 text-xl text-victory sm:text-2xl"
+            className="mb-6 flex items-center gap-3 font-mono text-sm uppercase tracking-[0.3em] text-victory sm:text-base"
           >
             <Seal className="h-8 w-8 shrink-0" />
             Tap. Verify. Play.

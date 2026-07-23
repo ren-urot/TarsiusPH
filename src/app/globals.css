@@ -40,7 +40,7 @@
   --color-foreground: var(--foreground);
 
   --font-display: var(--font-big-shoulders);
-  --font-sans: var(--font-jakarta);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-plex-mono);
 
   --animate-drift: drift 18s ease-in-out infinite;

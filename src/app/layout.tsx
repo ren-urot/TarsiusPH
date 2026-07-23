@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Big_Shoulders, Plus_Jakarta_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Big_Shoulders, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 const bigShoulders = Big_Shoulders({
@@ -8,8 +8,8 @@ const bigShoulders = Big_Shoulders({
   weight: ["600", "700", "800", "900"],
 });
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bigShoulders.variable} ${jakarta.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${bigShoulders.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-carbon text-light">{children}</body>
     </html>

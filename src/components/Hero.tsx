@@ -44,14 +44,13 @@ export default function Hero() {
             Tap. Verify. Play.
           </motion.div>
 
-          <h1 className="font-display flex flex-wrap text-[clamp(2.75rem,24vw,9.5rem)] font-extrabold uppercase leading-[0.85] tracking-tight lg:text-[12.75vw] xl:text-[10.5vw]">
+          <h1 className="text-gradient font-display flex flex-wrap text-[clamp(2.75rem,24vw,9.5rem)] font-extrabold uppercase leading-[0.85] tracking-tight lg:text-[12.75vw] xl:text-[10.5vw]">
             {headline.map((letter, i) => (
               <motion.span
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className="text-gradient"
               >
                 {letter}
               </motion.span>

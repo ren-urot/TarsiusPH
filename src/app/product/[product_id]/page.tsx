@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getProductByProductId } from "@/lib/supabase/products";
 import AuthBanner from "@/components/product/AuthBanner";
@@ -85,11 +86,8 @@ export default async function ProductPage({ params }: PageProps) {
       <AuthBanner status="valid" productId={product.product_id} />
       <main className="flex-1 bg-carbon px-6 py-16 sm:px-10 lg:px-16">
         <div className="mx-auto w-full max-w-6xl">
-          <Link
-            href="/"
-            className="font-display text-lg font-extrabold uppercase tracking-wide text-light/90"
-          >
-            Tarsius
+          <Link href="/" aria-label="Tarsius home">
+            <Image src="/hero/tarsius-logo.svg" alt="Tarsius" width={203} height={58} className="h-7 w-auto" />
           </Link>
 
           <div className="mt-12 grid grid-cols-1 gap-16 lg:grid-cols-2">

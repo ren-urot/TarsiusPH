@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-// Header content height = py-6 (1.5rem) * 2 + logo height, per breakpoint.
-const HEADER_HEIGHT = "h-[8.1rem] sm:h-[8.95rem]";
+// Header content height = py-3 (0.75rem) * 2 + logo height, per breakpoint.
+const HEADER_HEIGHT = "h-[6.6rem] sm:h-[7.45rem]";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,11 +31,11 @@ export default function Header() {
           has room to ease out smoothly instead of a hard cutoff. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none fixed inset-x-0 top-[8.1rem] z-40 h-[4.5rem] bg-header-scrim transition-opacity duration-500 sm:top-[8.95rem] ${
+        className={`pointer-events-none fixed inset-x-0 top-[6.6rem] z-40 h-[4.5rem] bg-header-scrim transition-opacity duration-500 sm:top-[7.45rem] ${
           scrolled ? "opacity-80" : "opacity-0"
         }`}
       />
-      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-6 sm:px-10 lg:px-16">
+      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-3 sm:px-10 lg:px-16">
         <a href="#hero" aria-label="Tarsius home">
           <Image src="/hero/tarsius-logo.svg" alt="Tarsius" width={1612} height={1054} className="h-[5.1rem] w-auto sm:h-[5.95rem]" priority />
         </a>

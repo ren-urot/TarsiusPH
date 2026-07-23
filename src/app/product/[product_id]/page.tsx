@@ -43,7 +43,7 @@ export default async function ProductPage({ params }: PageProps) {
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
-              href="mailto:support@tarsius.ph?subject=Suspected%20counterfeit%20product"
+              href="mailto:tarsius.ph@gmail.com?subject=Suspected%20counterfeit%20product"
               className="rounded-full bg-signature px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-carbon"
             >
               Contact Support

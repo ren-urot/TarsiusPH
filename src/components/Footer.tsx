@@ -20,8 +20,8 @@ export default function Footer() {
 
         <div className="flex flex-col gap-1 font-mono text-sm text-light/70">
           <span className="mb-2 text-xs uppercase tracking-[0.3em] text-gold">Contact</span>
-          <a href="mailto:hello@tarsius.ph" className="w-fit transition-colors hover:text-victory">
-            hello@tarsius.ph
+          <a href="mailto:tarsius.ph@gmail.com" className="w-fit transition-colors hover:text-victory">
+            tarsius.ph@gmail.com
           </a>
         </div>
 

@@ -23,7 +23,7 @@ export default function AuthBanner({ status, productId }: AuthBannerProps) {
         ⚠ Invalid or counterfeit product
       </p>
       <a
-        href="mailto:support@tarsius.ph?subject=Suspected%20counterfeit%20product"
+        href="mailto:tarsius.ph@gmail.com?subject=Suspected%20counterfeit%20product"
         className="rounded-full border border-light/40 px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors hover:border-light hover:bg-light/10"
       >
         Contact Support

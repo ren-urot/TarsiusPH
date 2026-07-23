@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
+// Header content height = py-6 (1.5rem) * 2 + logo height, per breakpoint.
+const HEADER_HEIGHT = "h-[8.1rem] sm:h-[8.95rem]";
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -14,24 +17,37 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-6 sm:px-10 lg:px-16">
+    <>
+      {/* Solid backdrop, sized to exactly match the header's own box - full
+          coverage behind the logo/nav, no fading in that zone at all. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 bg-header-scrim transition-opacity duration-500 ${
+        className={`pointer-events-none fixed inset-x-0 top-0 z-40 ${HEADER_HEIGHT} bg-black transition-opacity duration-500 ${
           scrolled ? "opacity-100" : "opacity-0"
         }`}
       />
-      <a href="#hero" aria-label="Tarsius home" className="relative">
-        <Image src="/hero/tarsius-logo.svg" alt="Tarsius" width={1612} height={1054} className="h-[5.1rem] w-auto sm:h-[5.95rem]" priority />
-      </a>
-      <nav className="relative flex items-center gap-8 font-mono text-xs uppercase tracking-[0.25em] text-white sm:text-sm">
-        <a href="#about" className="transition-colors hover:text-gold">
-          About
+      {/* Fade skirt, starts exactly where the header ends and tapers to
+          transparent on its own - decoupled from the header's box, so it
+          has room to ease out smoothly instead of a hard cutoff. */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none fixed inset-x-0 top-[8.1rem] z-40 h-10 bg-header-scrim transition-opacity duration-500 sm:top-[8.95rem] ${
+          scrolled ? "opacity-100" : "opacity-0"
+        }`}
+      />
+      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-6 sm:px-10 lg:px-16">
+        <a href="#hero" aria-label="Tarsius home">
+          <Image src="/hero/tarsius-logo.svg" alt="Tarsius" width={1612} height={1054} className="h-[5.1rem] w-auto sm:h-[5.95rem]" priority />
         </a>
-        <a href="#nfc" className="transition-colors hover:text-gold">
-          NFC Tech
-        </a>
-      </nav>
-    </header>
+        <nav className="flex items-center gap-8 font-mono text-xs uppercase tracking-[0.25em] text-white sm:text-sm">
+          <a href="#about" className="transition-colors hover:text-gold">
+            About
+          </a>
+          <a href="#nfc" className="transition-colors hover:text-gold">
+            NFC Tech
+          </a>
+        </nav>
+      </header>
+    </>
   );
 }

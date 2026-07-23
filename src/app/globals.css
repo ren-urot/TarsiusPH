@@ -122,17 +122,6 @@ body {
   }
 }
 
-@keyframes shimmer-sweep {
-  0%,
-  15% {
-    transform: translateX(-140%);
-  }
-  50%,
-  100% {
-    transform: translateX(140%);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

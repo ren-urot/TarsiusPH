@@ -17,7 +17,7 @@ export default function Header() {
     <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-6 sm:px-10 lg:px-16">
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-x-0 top-0 h-[4.05rem] bg-gradient-to-b from-black to-transparent transition-opacity duration-500 sm:h-[17.9rem] sm:from-black/95 ${
+        className={`pointer-events-none absolute inset-0 bg-gradient-to-b from-black to-black/60 transition-opacity duration-500 ${
           scrolled ? "opacity-100" : "opacity-0"
         }`}
       />

@@ -38,8 +38,8 @@ export default async function ProductPage({ params }: PageProps) {
             We couldn&apos;t verify this product
           </h1>
           <p className="mt-6 max-w-md text-light/70">
-            The code <span className="font-mono text-light">{product_id}</span> doesn&apos;t
-            match any paddle in the Tarsius production ledger. If you tapped this from a
+            The code <span className="font-mono text-light">{product_id}</span>{" "}
+            doesn&apos;t match any paddle in the Tarsius production ledger. If you tapped this from a
             Tarsius product, it may be counterfeit. Please get in touch so we can look into it.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -53,7 +53,7 @@ export default async function ProductPage({ params }: PageProps) {
               href="/"
               className="rounded-full border border-graphite px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-light/80 transition-colors hover:border-light/40"
             >
-              Visit Tarsius.com
+              Visit tarsiusph.com
             </Link>
           </div>
         </main>

@@ -11,9 +11,7 @@ const LAYERS = [
   { d: "M1109 1026L667 0H69V1026H1109Z", fill: "#d83f10" },
   { d: "M1084 1026L642 0H44V1026H1084Z", fill: "#8f120e" },
   { d: "M1061 1026L619 0H21V1026H1061Z", fill: "#360f0d" },
-  // Slightly translucent so a hint of the photo shows through the black
-  // panel instead of a flat, fully opaque block.
-  { d: "M1038 1026L596 0H-2V1026H1038Z", fill: "#000000", fillOpacity: 0.95 },
+  { d: "M1038 1026L596 0H-2V1026H1038Z", fill: "#000000" },
 ];
 
 export default function StripeDivider({ className }: StripeDividerProps) {
@@ -23,9 +21,12 @@ export default function StripeDivider({ className }: StripeDividerProps) {
       preserveAspectRatio="none"
       className={className}
       aria-hidden="true"
+      // Translucent so a hint of the photo shows through every panel
+      // (stripes included) instead of flat, fully opaque color.
+      fillOpacity={0.8}
     >
-      {LAYERS.map(({ d, fill, fillOpacity }) => (
-        <path key={fill} d={d} fill={fill} fillOpacity={fillOpacity} />
+      {LAYERS.map(({ d, fill }) => (
+        <path key={fill} d={d} fill={fill} />
       ))}
     </svg>
   );

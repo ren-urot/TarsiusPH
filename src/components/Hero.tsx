@@ -33,7 +33,7 @@ export default function Hero() {
       <StripeDivider className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block" />
 
       <div className="relative z-10 flex w-full flex-1 flex-col justify-center px-6 pt-28 pb-16 sm:px-10 lg:px-16">
-        <div className="max-w-lg lg:max-w-[30vw]">
+        <div className="max-w-lg lg:max-w-none">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ export default function Hero() {
             Tap. Verify. Play.
           </motion.div>
 
-          <h1 className="font-display flex flex-wrap text-[20vw] font-extrabold uppercase leading-[0.85] tracking-tight sm:text-[13vw] lg:text-[7.5vw] xl:text-[6.2vw]">
+          <h1 className="font-display flex flex-wrap text-[clamp(2.75rem,24vw,9.5rem)] font-extrabold uppercase leading-[0.85] tracking-tight lg:text-[12.75vw] xl:text-[10.5vw]">
             {headline.map((letter, i) => (
               <motion.span
                 key={i}

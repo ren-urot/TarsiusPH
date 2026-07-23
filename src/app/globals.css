@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+:root {
+  --color-crimson: #8e1b13;
+  --color-performance: #d3321f;
+  --color-orange: #f25a1f;
+  --color-gold: #c9962c;
+  --color-victory: #f5c65a;
+
+  --color-carbon: #121212;
+  --color-graphite: #2a2a2a;
+  --color-light: #f5f5f5;
+  --color-paper: #ffffff;
+
+  --gradient-signature: linear-gradient(
+    100deg,
+    var(--color-crimson) 0%,
+    var(--color-performance) 28%,
+    var(--color-orange) 52%,
+    var(--color-gold) 76%,
+    var(--color-victory) 100%
+  );
+
+  --background: var(--color-carbon);
+  --foreground: var(--color-light);
+}
+
+@theme inline {
+  --color-crimson: var(--color-crimson);
+  --color-performance: var(--color-performance);
+  --color-orange: var(--color-orange);
+  --color-gold: var(--color-gold);
+  --color-victory: var(--color-victory);
+  --color-carbon: var(--color-carbon);
+  --color-graphite: var(--color-graphite);
+  --color-light: var(--color-light);
+  --color-paper: var(--color-paper);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--font-big-shoulders);
+  --font-sans: var(--font-jakarta);
+  --font-mono: var(--font-plex-mono);
+
+  --animate-drift: drift 18s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  --animate-marquee: marquee 26s linear infinite;
+}
+
+* {
+  border-color: var(--color-graphite);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-gradient {
+  background: var(--gradient-signature);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-signature {
+  background: var(--gradient-signature);
+}
+
+.border-gradient {
+  border-image: var(--gradient-signature) 1;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) rotate(6deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  80% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-carbon);
+}

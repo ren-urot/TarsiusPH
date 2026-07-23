@@ -21,9 +21,9 @@ export default function StripeDivider({ className }: StripeDividerProps) {
       preserveAspectRatio="none"
       className={className}
       aria-hidden="true"
-      // Translucent so a hint of the photo shows through every panel
-      // (stripes included) instead of flat, fully opaque color.
-      fillOpacity={0.8}
+      // Translucent so the photo clearly shows through every panel
+      // (stripes included) instead of flat, opaque color.
+      fillOpacity={0.5}
     >
       {LAYERS.map(({ d, fill }) => (
         <path key={fill} d={d} fill={fill} />

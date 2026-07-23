@@ -30,7 +30,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/85 to-carbon/40 lg:hidden" />
 
       {/* desktop: the diagonal stepped panel painted over the photo */}
-      <StripeDivider className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block" />
+      <StripeDivider className="pointer-events-none absolute inset-y-0 left-0 hidden h-full w-[60.573%] opacity-80 lg:block" />
 
       <div className="relative z-10 flex w-full flex-1 flex-col justify-center px-6 pt-28 pb-16 sm:px-10 lg:px-16">
         <div className="max-w-lg lg:max-w-none">

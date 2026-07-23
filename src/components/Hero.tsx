@@ -13,8 +13,9 @@ export default function Hero() {
       id="hero"
       className="relative isolate flex min-h-[100svh] w-full flex-col justify-center overflow-hidden bg-carbon"
     >
-      {/* photographic background */}
-      <div className="absolute inset-0">
+      {/* photo: full bleed on mobile; on desktop it's repositioned to exactly
+          match the Figma export (x:301/1920, w:1619/1920 of the canvas) */}
+      <div className="absolute inset-0 lg:left-[15.68%] lg:w-[84.32%]">
         <Image
           src="/hero/paddle-photo.jpg"
           alt="Tarsius paddle and pickleball on the court"
@@ -23,13 +24,13 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        {/* mobile: dim the full photo so text stays legible */}
-        <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/85 to-carbon/40 lg:hidden" />
-        {/* desktop: solid panel behind the copy, photo carries the right side */}
-        <div className="absolute inset-y-0 left-0 hidden w-[38%] bg-carbon lg:block" />
       </div>
 
-      <StripeDivider className="pointer-events-none absolute inset-y-0 left-[36%] hidden h-full w-[9%] lg:block" />
+      {/* mobile: dim the full photo so text stays legible */}
+      <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/85 to-carbon/40 lg:hidden" />
+
+      {/* desktop: the diagonal stepped panel painted over the photo */}
+      <StripeDivider className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block" />
 
       <div className="relative z-10 flex w-full flex-1 flex-col justify-center px-6 pt-28 pb-16 sm:px-10 lg:px-16">
         <div className="max-w-lg lg:max-w-[30vw]">

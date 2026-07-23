@@ -2,30 +2,28 @@ type StripeDividerProps = {
   className?: string;
 };
 
-// Bottom-to-top paint order: each layer's offset peeks out as a thin sliver
-// beyond the edge of the layer stacked on top of it, producing the stepped
-// diagonal bevel between the hero's dark panel and its photo.
+// Exact path data and paint order from the Figma export: six diagonal
+// panels sharing one edge, each shifted right and stacked so a thin sliver
+// of every color (gold through black) shows between the one above it.
 const LAYERS = [
-  { offset: 123, fill: "#e2b640" },
-  { offset: 97, fill: "#c38428" },
-  { offset: 71, fill: "#d83f10" },
-  { offset: 46, fill: "#8f120e" },
-  { offset: 23, fill: "#360f0d" },
-  { offset: 0, fill: "#000000" },
+  { d: "M1161 1026L719 0H121V1026H1161Z", fill: "#e2b640" },
+  { d: "M1135 1026L693 0H95V1026H1135Z", fill: "#c38428" },
+  { d: "M1109 1026L667 0H69V1026H1109Z", fill: "#d83f10" },
+  { d: "M1084 1026L642 0H44V1026H1084Z", fill: "#8f120e" },
+  { d: "M1061 1026L619 0H21V1026H1061Z", fill: "#360f0d" },
+  { d: "M1038 1026L596 0H-2V1026H1038Z", fill: "#000000" },
 ];
-
-const SHAPE = "M1040 1026L598 0H0V1026H1040Z";
 
 export default function StripeDivider({ className }: StripeDividerProps) {
   return (
     <svg
-      viewBox="0 0 1163 1026"
+      viewBox="0 0 1920 1026"
       preserveAspectRatio="none"
       className={className}
       aria-hidden="true"
     >
-      {LAYERS.map(({ offset, fill }) => (
-        <path key={offset} d={SHAPE} fill={fill} transform={`translate(${offset}, 0)`} />
+      {LAYERS.map(({ d, fill }) => (
+        <path key={fill} d={d} fill={fill} />
       ))}
     </svg>
   );

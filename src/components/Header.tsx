@@ -3,9 +3,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-// Explicit header height, shared with the backdrop/skirt below so they
-// always stay in sync - editing this one value resizes all three.
+// Explicit header height - the logo/nav's own box, left alone.
 const HEADER_HEIGHT = "h-[5.28rem] sm:h-[5.96rem]";
+// Backdrop is now shorter than the header on purpose (65% of it), so it
+// only covers the top portion - the skirt starts where the backdrop
+// itself ends, not where the header ends.
+const BACKDROP_HEIGHT = "h-[3.432rem] sm:h-[3.874rem]";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,20 +22,19 @@ export default function Header() {
 
   return (
     <>
-      {/* Solid backdrop, sized to exactly match the header's own box - full
-          coverage behind the logo/nav, no fading in that zone at all. */}
+      {/* Solid backdrop - shorter than the header on purpose, covers only
+          the top portion. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none fixed inset-x-0 top-0 z-40 ${HEADER_HEIGHT} bg-black transition-opacity duration-500 ${
+        className={`pointer-events-none fixed inset-x-0 top-0 z-40 ${BACKDROP_HEIGHT} bg-black transition-opacity duration-500 ${
           scrolled ? "opacity-80" : "opacity-0"
         }`}
       />
-      {/* Fade skirt, starts exactly where the header ends and tapers to
-          transparent on its own - decoupled from the header's box, so it
-          has room to ease out smoothly instead of a hard cutoff. */}
+      {/* Fade skirt, starts exactly where the backdrop ends (not the
+          header) and tapers to transparent on its own. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none fixed inset-x-0 top-[5.28rem] z-40 h-[4.5rem] bg-header-scrim transition-opacity duration-500 sm:top-[5.96rem] ${
+        className={`pointer-events-none fixed inset-x-0 top-[3.432rem] z-40 h-[4.5rem] bg-header-scrim transition-opacity duration-500 sm:top-[3.874rem] ${
           scrolled ? "opacity-80" : "opacity-0"
         }`}
       />

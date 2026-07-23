@@ -31,6 +31,16 @@ export default function Hero() {
       {/* desktop: the diagonal stepped panel painted over the photo */}
       <StripeDivider className="pointer-events-none absolute inset-y-0 left-0 hidden h-full w-[60.573%] opacity-90 lg:block" />
 
+      {/* desktop: a soft light sheen sweeping across the panel, like light
+          catching a glossy surface - pauses between passes rather than
+          looping continuously */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[60.573%] overflow-hidden lg:block">
+        <div
+          className="absolute inset-y-0 w-1/4 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+          style={{ animation: "shimmer-sweep 7s ease-in-out infinite" }}
+        />
+      </div>
+
       <div className="relative z-10 flex w-full flex-1 flex-col justify-center px-6 pt-28 pb-16 sm:px-10 lg:px-16">
         <div className="max-w-lg lg:max-w-none">
           <motion.div

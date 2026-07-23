@@ -87,7 +87,7 @@ export default async function ProductPage({ params }: PageProps) {
       <main className="flex-1 bg-carbon px-6 py-16 sm:px-10 lg:px-16">
         <div className="mx-auto w-full max-w-6xl">
           <Link href="/" aria-label="Tarsius home">
-            <Image src="/hero/tarsius-logo.svg" alt="Tarsius" width={203} height={58} className="h-7 w-auto" />
+            <Image src="/hero/tarsius-logo.svg" alt="Tarsius" width={1612} height={1054} className="h-11 w-auto" />
           </Link>
 
           <div className="mt-12 grid grid-cols-1 gap-16 lg:grid-cols-2">

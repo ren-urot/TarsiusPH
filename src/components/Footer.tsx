@@ -13,7 +13,7 @@ export default function Footer() {
 
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 sm:flex-row sm:justify-between">
         <div>
-          <Image src="/hero/tarsius-logo.svg" alt="Tarsius" width={203} height={58} className="h-7 w-auto" />
+          <Image src="/hero/tarsius-logo.svg" alt="Tarsius" width={1612} height={1054} className="h-11 w-auto" />
           <p className="mt-3 max-w-xs text-sm text-light/60">
             Premium pickleball paddles, engineered in the Philippines and sealed
             with an NFC authenticity chip in every one.

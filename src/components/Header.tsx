@@ -31,7 +31,7 @@ export default function Header() {
           has room to ease out smoothly instead of a hard cutoff. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none fixed inset-x-0 top-[8.1rem] z-40 h-24 bg-header-scrim transition-opacity duration-500 sm:top-[8.95rem] ${
+        className={`pointer-events-none fixed inset-x-0 top-[8.1rem] z-40 h-[4.5rem] bg-header-scrim transition-opacity duration-500 sm:top-[8.95rem] ${
           scrolled ? "opacity-80" : "opacity-0"
         }`}
       />

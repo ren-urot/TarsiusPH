@@ -43,11 +43,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-16 flex w-full max-w-7xl flex-col-reverse items-start justify-between gap-4 border-t border-graphite pt-6 text-xs text-light/45 sm:flex-row sm:items-center">
+      <div className="mx-auto mt-16 w-full max-w-7xl border-t border-graphite pt-6 text-center text-xs text-light/45">
         <span>© {new Date().getFullYear()} Tarsius. All rights reserved.</span>
-        <a href="/privacy" className="transition-colors hover:text-victory">
-          Privacy Policy
-        </a>
       </div>
     </footer>
   );

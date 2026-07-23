@@ -46,7 +46,7 @@ export default function About() {
             <span className="text-gradient">matters.</span>
           </h2>
           <p className="mt-8 max-w-md text-light/75">
-            Tarsius started on a court in Cebu, where a bent aluminum paddle lost
+            Tarsius started on a court in Bohol, where a bent aluminum paddle lost
             a championship point that should have been won. We set out to build
             the paddle that wouldn&apos;t, and to give every owner a way to know,
             without doubt, that what&apos;s in their hand is the real thing.

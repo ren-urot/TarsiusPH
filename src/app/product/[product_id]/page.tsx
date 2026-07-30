@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { getProductByProductId } from "@/lib/supabase/products";
+import { getAllProductIds, getProductByProductId } from "@/lib/products";
 import AuthBanner from "@/components/product/AuthBanner";
 import ProductGallery from "@/components/product/ProductGallery";
 import Footer from "@/components/Footer";
@@ -9,12 +9,19 @@ import Seal from "@/components/Seal";
 
 type PageProps = { params: Promise<{ product_id: string }> };
 
+// Every product is baked into the static build - no server lookup at
+// request time. Any product_id not listed here still renders (the
+// invalid/counterfeit state below), it's just not pre-generated.
+export function generateStaticParams() {
+  return getAllProductIds().map((product_id) => ({ product_id }));
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { product_id } = await params;
-  const product = await getProductByProductId(product_id);
+  const product = getProductByProductId(product_id);
 
   return {
-    title: product ? `${product.product_name} | Tarsius` : `Unrecognized product | Tarsius`,
+    title: product ? `${product.productName} | Tarsius` : `Unrecognized product | Tarsius`,
   };
 }
 
@@ -24,7 +31,7 @@ function formatSpecLabel(key: string) {
 
 export default async function ProductPage({ params }: PageProps) {
   const { product_id } = await params;
-  const product = await getProductByProductId(product_id);
+  const product = getProductByProductId(product_id);
 
   if (!product) {
     return (
@@ -65,25 +72,23 @@ export default async function ProductPage({ params }: PageProps) {
   const specRows: [string, string][] = [
     ["Materials", product.materials],
     ["Weight", product.weight],
-    ["Grip Size", product.grip_size],
-    ...Object.entries(product.specifications ?? {}).map(
-      ([k, v]) => [formatSpecLabel(k), String(v)] as [string, string]
+    ["Grip Size", product.gripSize],
+    ...Object.entries(product.specifications).map(
+      ([k, v]) => [formatSpecLabel(k), v] as [string, string]
     ),
     [
       "Manufactured",
-      product.manufacture_date
-        ? new Date(product.manufacture_date).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-          })
-        : "Not available",
+      new Date(product.manufactureDate).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+      }),
     ],
     ["Warranty", product.warranty],
   ].filter(([, v]): boolean => Boolean(v)) as [string, string][];
 
   return (
     <>
-      <AuthBanner status="valid" productId={product.product_id} />
+      <AuthBanner status="valid" productId={product.productId} />
       <main className="flex-1 bg-carbon px-6 py-16 sm:px-10 lg:px-16">
         <div className="mx-auto w-full max-w-6xl">
           <Link href="/" aria-label="Tarsius home">
@@ -92,8 +97,8 @@ export default async function ProductPage({ params }: PageProps) {
 
           <div className="mt-12 grid grid-cols-1 gap-16 lg:grid-cols-2">
             <ProductGallery
-              images={product.gallery_urls?.length ? product.gallery_urls : [product.image_url]}
-              productName={product.product_name}
+              images={product.galleryUrls.length ? product.galleryUrls : [product.imageUrl]}
+              productName={product.productName}
             />
 
             <div>
@@ -101,7 +106,7 @@ export default async function ProductPage({ params }: PageProps) {
                 {product.model || "Tarsius Paddle"}
               </p>
               <h1 className="font-display mt-3 text-4xl font-extrabold uppercase leading-[0.95] sm:text-5xl">
-                {product.product_name}
+                {product.productName}
               </h1>
               <p className="mt-6 max-w-lg text-light/75">{product.description}</p>
 
@@ -109,7 +114,7 @@ export default async function ProductPage({ params }: PageProps) {
                 <Seal className="h-10 w-10 shrink-0" />
                 <div className="font-mono text-xs uppercase tracking-widest text-light/60">
                   Certified unit
-                  <div className="mt-1 text-sm text-victory">{product.product_id}</div>
+                  <div className="mt-1 text-sm text-victory">{product.productId}</div>
                 </div>
               </div>
 

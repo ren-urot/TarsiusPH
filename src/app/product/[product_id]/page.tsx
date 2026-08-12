@@ -22,6 +22,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: product ? `${product.productName} | Tarsius` : `Unrecognized product | Tarsius`,
+    description: product
+      ? `Authenticity record for ${product.productName} (${product.productId}), verified via NFC tap.`
+      : `No Tarsius product matches code ${product_id}. This may be a counterfeit.`,
+    // NFC-only access pages (see PRD) - not meant to surface in search,
+    // for real products or guessed/fake IDs alike.
+    robots: { index: false, follow: false },
   };
 }
 

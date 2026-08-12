@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import PaddleMark from "@/components/PaddleMark";
 
 type ProductGalleryProps = {
@@ -8,7 +9,7 @@ type ProductGalleryProps = {
   productName: string;
 };
 
-function Frame({ src, alt }: { src?: string; alt: string }) {
+function Frame({ src, alt, priority, sizes }: { src?: string; alt: string; priority?: boolean; sizes: string }) {
   const [broken, setBroken] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -35,12 +36,14 @@ function Frame({ src, alt }: { src?: string; alt: string }) {
   }
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <Image
       ref={imgRef}
       src={src}
       alt={alt}
-      className="h-full w-full object-cover"
+      fill
+      sizes={sizes}
+      priority={priority}
+      className="object-cover"
       onError={() => setBroken(true)}
     />
   );
@@ -52,8 +55,14 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
 
   return (
     <div>
-      <div className="aspect-square w-full overflow-hidden rounded-2xl border border-graphite bg-carbon">
-        <Frame key={shots[active] ?? active} src={shots[active]} alt={`${productName}, view ${active + 1}`} />
+      <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-graphite bg-carbon">
+        <Frame
+          key={shots[active] ?? active}
+          src={shots[active]}
+          alt={`${productName}, view ${active + 1}`}
+          priority
+          sizes="(max-width: 1024px) 100vw, 544px"
+        />
       </div>
 
       {shots.length > 1 && (
@@ -62,13 +71,13 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`aspect-square overflow-hidden rounded-lg border transition-colors ${
+              className={`relative aspect-square overflow-hidden rounded-lg border transition-colors ${
                 active === i ? "border-gold" : "border-graphite hover:border-victory/50"
               }`}
               aria-label={`Show view ${i + 1}`}
               aria-pressed={active === i}
             >
-              <Frame src={src} alt={`${productName} thumbnail ${i + 1}`} />
+              <Frame src={src} alt={`${productName} thumbnail ${i + 1}`} sizes="140px" />
             </button>
           ))}
         </div>

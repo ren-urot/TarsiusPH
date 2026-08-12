@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Big_Shoulders, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -20,10 +20,43 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
 });
 
+// Update this if a custom domain (e.g. tarsiusph.com) gets configured -
+// it's what OG/Twitter image URLs and canonical links resolve against.
+const SITE_URL = "https://tarsius-ph.vercel.app";
+const SITE_NAME = "Tarsius";
+const SITE_DESCRIPTION =
+  "Tarsius is a premium pickleball brand. Every paddle carries an NFC seal. Tap it to verify authenticity and see the full story behind your gear.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Tarsius | Tap. Verify. Play.",
-  description:
-    "Tarsius is a premium pickleball brand. Every paddle carries an NFC seal. Tap it to verify authenticity and see the full story behind your gear.",
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Tarsius | Tap. Verify. Play.",
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    type: "website",
+    locale: "en_US",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Tarsius" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tarsius | Tap. Verify. Play.",
+    description: SITE_DESCRIPTION,
+    images: ["/opengraph-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#121212",
 };
 
 export default function RootLayout({

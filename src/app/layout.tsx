@@ -20,9 +20,8 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
 });
 
-// Update this if a custom domain (e.g. tarsiusph.com) gets configured -
-// it's what OG/Twitter image URLs and canonical links resolve against.
-const SITE_URL = "https://tarsius-ph.vercel.app";
+// It's what OG/Twitter image URLs and canonical links resolve against.
+const SITE_URL = "https://tarsiusph.com";
 const SITE_NAME = "Tarsius";
 const SITE_DESCRIPTION =
   "Tarsius is a premium pickleball brand. Every paddle carries an NFC seal. Tap it to verify authenticity and see the full story behind your gear.";

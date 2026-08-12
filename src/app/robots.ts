@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/product/",
     },
-    sitemap: "https://tarsius-ph.vercel.app/sitemap.xml",
+    sitemap: "https://tarsiusph.com/sitemap.xml",
   };
 }
